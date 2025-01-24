@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prova - AI-102</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Prova | AI-102</h1>
+            <div class="buttons">
+                <button id="toggle-answer" onclick="toggleAnswer()">Ver Resposta</button>
+            </div>
+        </div>
+        
+        <div class="question">
+            <h2>Pergunta 1</h2>
+            <img src="/img/pergunta_1.jpg" alt="Pergunta 1">
+        </div>
+
+        <div class="answers">
+            <h3>Resposta Correta:</h3>
+            <img src="/img/resposta_1.jpg" alt="Resposta 1">
+        </div>
+        <div class="navigation">
+            <button onclick="navigateQuestion(-1)" class="prev">⟵</button>
+            <button onclick="navigateQuestion(1)" class="next">⟶</button>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
