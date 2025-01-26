@@ -127,7 +127,7 @@ h1 {
     max-width: 100%;
     border-radius: 8px;
 }
-.navigation-container {
+.navigation_container {
     position: fixed;
     bottom: 45vh; /* Posicionado na parte inferior da tela */
     left: 50%; /* Posiciona o contêiner no centro da tela */
@@ -173,6 +173,53 @@ h1 {
     background-color: #ccc;
     cursor: not-allowed;
     transform: none;
+}
+.navigation_container_reset {
+    position: fixed;
+    bottom: 40vh; /* Posicionado na parte inferior da tela */
+    left: 50%; /* Posiciona o contêiner no centro da tela */
+    transform: translateX(-50%); /* Centraliza horizontalmente */
+    width: 800px; /* Alinha com a largura do .container */
+    max-width: calc(100% - 40px); /* Garante responsividade para telas menores */
+    padding: 10px 20px; /* Adiciona espaçamento interno */
+    display: flex;
+    justify-content: center; /* Centraliza os botões dentro do contêiner */
+    z-index: 10; /* Garante que o contêiner fique acima de outros elementos */
+    pointer-events: none; /* Interação somente nos botões filhos */
+    box-sizing: border-box; /* Inclui o padding no cálculo do tamanho */
+}
+.reset_button {
+    display: flex;
+    flex-direction: column; /* Botões organizados em coluna */
+    align-items: center; /* Centraliza os botões horizontalmente */
+    margin-left: 900px; /* Espaçamento superior entre os botões */
+    gap: 10px; /* Espaçamento entre os botões */
+}
+
+.reset_button .error {
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background-color: #f44336; /* Vermelho para indicar erro */
+    color: white;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.reset_button .error:hover {
+    background-color: #d32f2f; /* Vermelho mais escuro no hover */
+    transform: scale(1.1);
+}
+
+.reset_button .error:focus {
+    outline: none;
+    box-shadow: 0 0 4px rgba(244, 67, 54, 0.5);
 }
 
 
