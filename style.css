@@ -75,6 +75,22 @@ html {
     outline: none;
     box-shadow: 0 0 4px rgba(76, 175, 80, 0.5);
 }
+.progress-container {
+    width: 100%;
+    background-color: #e0e0e0; /* Fundo da barra de progresso */
+    border-radius: 8px;
+    overflow: hidden; /* Garante que a barra não ultrapasse os limites */
+    height: 20px; /* Altura da barra */
+    margin: 20px 0; /* Espaçamento em relação aos outros elementos */
+}
+
+.progress-bar {
+    width: 0; /* Progresso inicial */
+    height: 100%;
+    background-color: #4caf50; /* Cor do progresso */
+    transition: width 0.3s ease; /* Animação suave ao atualizar */
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;

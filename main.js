@@ -25,7 +25,7 @@ function toggleAnswer() {
 }
 
 let currentQuestion = 1; // Começa na pergunta 1
-const totalQuestions = 10; // Altere para o número total de perguntas
+const totalQuestions = 50; // Altere para o número total de perguntas
 
 function navigateQuestion(direction) {
     const questionElement = document.querySelector('.question');
@@ -52,7 +52,13 @@ function navigateQuestion(direction) {
     toggleButton.innerText = 'Ver Resposta';
     toggleButton.style.backgroundColor = '#4caf50'; // Cor verde para "Ver Resposta"
     toggleButton.style.width = '120px'; // Garante que a largura seja consistente
+
+    // Atualiza a barra de progresso
+    updateProgressBar();
 }
+// Inicializa a barra de progresso
+updateProgressBar();
+
 function goToQuestion() {
     const questionInput = document.getElementById('question-input');
     const questionElement = document.querySelector('.question');
@@ -84,4 +90,16 @@ function goToQuestion() {
 
     answersElement.querySelector('img').src = `/img/resposta_${currentQuestion}.jpg`;
     answersElement.querySelector('img').alt = `Resposta ${currentQuestion}`;
+
+    // Atualiza a barra de progresso
+    updateProgressBar();
+}
+function updateProgressBar() {
+    const progressBar = document.getElementById('progress-bar');
+    
+    // Calcula a porcentagem do progresso
+    const progressPercentage = (currentQuestion / 50) * 100;
+
+    // Atualiza a largura da barra
+    progressBar.style.width = `${progressPercentage}%`;
 }
