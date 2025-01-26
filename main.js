@@ -28,6 +28,7 @@ const totalQuestions = 10; // Altere para o número total de perguntas
 function navigateQuestion(direction) {
     const questionElement = document.querySelector('.question');
     const answersElement = document.querySelector('.answers');
+    const toggleButton = document.getElementById('toggle-answer'); // Seleciona o botão do cabeçalho
     
     // Atualiza o índice da pergunta atual
     currentQuestion += direction;
@@ -43,4 +44,11 @@ function navigateQuestion(direction) {
     
     answersElement.querySelector('img').src = `/img/resposta_${currentQuestion}.jpg`;
     answersElement.querySelector('img').alt = `Resposta ${currentQuestion}`;
+
+    // Redefine o botão do cabeçalho para "Ver Resposta"
+    answersElement.style.display = 'none'; // Esconde as respostas
+    toggleButton.innerText = 'Ver Resposta';
+    toggleButton.style.backgroundColor = '#4caf50'; // Cor verde para "Ver Resposta"
+    toggleButton.style.width = '120px'; // Garante que a largura seja consistente
+
 }

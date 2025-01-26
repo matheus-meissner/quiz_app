@@ -67,17 +67,28 @@ h1 {
     max-width: 100%;
     border-radius: 8px;
 }
-.navigation {
+.navigation-container {
     position: fixed;
-    top: 50%;
-    width: 100%;
+    bottom: 45vh; /* Posicionado na parte inferior da tela */
+    left: 50%; /* Posiciona o contêiner no centro da tela */
+    transform: translateX(-50%); /* Centraliza horizontalmente */
+    width: 800px; /* Alinha com a largura do .container */
+    max-width: calc(100% - 40px); /* Garante responsividade para telas menores */
+    padding: 10px 20px; /* Adiciona espaçamento interno */
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    pointer-events: none; /* Permite interações apenas com os botões */
+    justify-content: center; /* Centraliza os botões dentro do contêiner */
+    z-index: 10; /* Garante que o contêiner fique acima de outros elementos */
+    pointer-events: none; /* Interação somente nos botões filhos */
+    box-sizing: border-box; /* Inclui o padding no cálculo do tamanho */
 }
+
+.navigation {
+    display: flex;
+    gap: 850px; /* Espaçamento horizontal entre os botões */
+    pointer-events: auto; /* Permite interação com os botões */
+}
+
 .navigation button {
-    pointer-events: auto; /* Reativa interações nos botões */
     width: 50px;
     height: 50px;
     border: none;
@@ -104,15 +115,4 @@ h1 {
     transform: none;
 }
 
-.navigation .prev {
-    position: absolute;
-    left: 20px;
-    transform: translateY(-20%);
-}
-
-.navigation .next {
-    position: absolute;
-    right: 200px;
-    transform: translateY(-20%);
-}
 
