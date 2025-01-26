@@ -9,15 +9,19 @@ html {
     padding: 10px 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative; /* Garante que o conteúdo interno seja posicionado corretamente */
 }
 
 .header h1 {
     margin: 0;
     font-size: 24px;
     color: #333;
+    flex: 1; /* O título ocupa o máximo de espaço disponível */
+    text-align: center;
 }
 
 .header button {
+    width: 120px; /* Largura fixa para manter consistência */
     padding: 10px 15px;
     font-size: 14px;
     border: none;
@@ -27,9 +31,49 @@ html {
     color: white;
     transition: background-color 0.3s ease;
 }
-
 .header button:hover {
     background-color: #45a049;
+}
+.search_bar {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaço entre o input e o botão */
+}
+
+.search_bar input {
+    width: 45px;
+    padding: 8px 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search_bar input:focus {
+    border-color: #4caf50;
+    box-shadow: 0 0 4px rgba(76, 175, 80, 0.5);
+}
+
+.search_bar button {
+    width: 45px;
+    padding: 8px 15px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #4caf50;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.search_bar button:hover {
+    background-color: #45a049;
+}
+
+.search_bar button:focus {
+    outline: none;
+    box-shadow: 0 0 4px rgba(76, 175, 80, 0.5);
 }
 body {
     font-family: Arial, sans-serif;
