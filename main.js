@@ -103,3 +103,34 @@ function updateProgressBar() {
     // Atualiza a largura da barra
     progressBar.style.width = `${progressPercentage}%`;
 }
+function resetToFirstQuestion() {
+    const questionElement = document.querySelector('.question');
+    const answersElement = document.querySelector('.answers');
+    const toggleButton = document.getElementById('toggle-answer');
+
+    // Valida se os elementos foram encontrados
+    if (!questionElement || !answersElement || !toggleButton) {
+        console.error("Um ou mais elementos necessários não foram encontrados.");
+        return;
+    }
+
+    // Redefine a pergunta para a 1ª
+    currentQuestion = 1;
+
+    // Atualiza o conteúdo da pergunta e resposta
+    questionElement.querySelector('h2').innerText = `Pergunta ${currentQuestion}`;
+    questionElement.querySelector('img').src = `/img/pergunta_${currentQuestion}.jpg`;
+    questionElement.querySelector('img').alt = `Pergunta ${currentQuestion}`;
+    
+    answersElement.querySelector('img').src = `/img/resposta_${currentQuestion}.jpg`;
+    answersElement.querySelector('img').alt = `Resposta ${currentQuestion}`;
+
+    // Esconde a resposta e redefine o botão de resposta
+    answersElement.style.display = 'none';
+    toggleButton.innerText = 'Ver Resposta';
+    toggleButton.style.backgroundColor = '#4caf50'; // Verde para "Ver Resposta"
+    toggleButton.style.width = '120px';
+
+    // Atualiza a barra de progresso
+    updateProgressBar();
+}
