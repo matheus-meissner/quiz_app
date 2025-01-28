@@ -14,11 +14,36 @@ function generateCheckpoints(totalQuestions, groupSize = 50) {
 
     return checkpoints;
 }
+function renderCheckpoints(checkpoints) {
+    const container = document.getElementById('checkpoints-container');
+
+    if (!container) {
+        console.error('Container de checkpoints não encontrado!');
+        return;
+    }
+
+    container.innerHTML = ''; // Limpa o conteúdo existente
+
+    checkpoints.forEach((limit, index) => {
+        const checkpointNumber = index + 1;
+
+        // Cria o elemento de checkpoint
+        const label = document.createElement('label');
+        label.innerHTML = `
+            <input type="checkbox" id="checkpoint-${limit}" disabled />
+            Checkpoint ${checkpointNumber}
+        `;
+
+        // Adiciona ao container
+        container.appendChild(label);
+    });
+}
 
 let currentCheckpointIndex = 0; // Índice do checkpoint atual
 const totalQuestions = 140; // Altere para o número total de perguntas
 const ultima_questao = totalQuestions; // Define a última questão
 const checkpoints = generateCheckpoints(totalQuestions); // Gera os checkpoints dinamicamente
+renderCheckpoints(checkpoints); // Renderiza os checkpoints no HTML
 
 function toggleAnswer() {
     const answers = document.querySelector('.answers');
