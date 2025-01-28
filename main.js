@@ -26,7 +26,7 @@ function toggleAnswer() {
 }
 
 let currentQuestion = 1; // Começa na pergunta 1
-const totalQuestions = 151; // Altere para o número total de perguntas
+const totalQuestions = 140; // Altere para o número total de perguntas
 
 function navigateQuestion(direction) {
     const questionElement = document.querySelector('.question');
