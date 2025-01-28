@@ -1,4 +1,5 @@
-// teste
+let checkpoints = [50, 100, 150]; // Pontos de checkpoint
+let currentCheckpointIndex = 0; // Índice do checkpoint atual
 
 function toggleAnswer() {
     const answers = document.querySelector('.answers');
@@ -55,6 +56,9 @@ function navigateQuestion(direction) {
 
     // Atualiza a barra de progresso
     updateProgressBar();
+
+    // Verifica o checkpoint
+    checkCheckpoint();
 }
 // Inicializa a barra de progresso
 updateProgressBar();
@@ -96,11 +100,10 @@ function goToQuestion() {
 }
 function updateProgressBar() {
     const progressBar = document.getElementById('progress-bar');
-    
-    // Calcula a porcentagem do progresso
-    const progressPercentage = (currentQuestion / 50) * 100;
+    const checkpointStart = checkpoints[currentCheckpointIndex - 1] || 1; // Início do intervalo
+    const checkpointEnd = checkpoints[currentCheckpointIndex] || totalQuestions; // Fim do intervalo
 
-    // Atualiza a largura da barra
+    const progressPercentage = ((currentQuestion - checkpointStart + 1) / (checkpointEnd - checkpointStart + 1)) * 100;
     progressBar.style.width = `${progressPercentage}%`;
 }
 function resetToFirstQuestion() {
@@ -133,4 +136,27 @@ function resetToFirstQuestion() {
 
     // Atualiza a barra de progresso
     updateProgressBar();
+}
+function checkCheckpoint() {
+    const checkpointLimit = checkpoints[currentCheckpointIndex];
+
+    // Se o usuário atingir o checkpoint atual
+    if (currentQuestion === checkpointLimit) {
+        currentCheckpointIndex++; // Avança para o próximo checkpoint
+        markCheckpoint(checkpointLimit); // Marca a checkbox
+        resetProgressForNextCheckpoint(); // Reseta para o próximo conjunto
+    }
+}
+function markCheckpoint(limit) {
+    const checkbox = document.querySelector(`#checkpoint-${limit}`);
+    if (checkbox) {
+        checkbox.checked = true;
+        alert(`Parabéns! Você concluiu as perguntas de ${limit - 49} a ${limit}.`);
+    }
+}
+function resetProgressForNextCheckpoint() {
+    if (currentCheckpointIndex < checkpoints.length) {
+        currentQuestion = checkpoints[currentCheckpointIndex - 1] + 1;
+        updateProgressBar();
+    }
 }
