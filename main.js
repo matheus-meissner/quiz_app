@@ -26,7 +26,7 @@ function toggleAnswer() {
 }
 
 let currentQuestion = 1; // Começa na pergunta 1
-const totalQuestions = 150; // Altere para o número total de perguntas
+const totalQuestions = 151; // Altere para o número total de perguntas
 
 function navigateQuestion(direction) {
     const questionElement = document.querySelector('.question');
@@ -117,8 +117,9 @@ function resetToFirstQuestion() {
         return;
     }
 
-    // Redefine a pergunta para a 1ª
-    currentQuestion = 1;
+    // Redefine a pergunta para a 1ª do checkpoint atual
+    const checkpointStart = checkpoints[currentCheckpointIndex - 1] || 1;
+    currentQuestion = checkpointStart;
 
     // Atualiza o conteúdo da pergunta e resposta
     questionElement.querySelector('h2').innerText = `Pergunta ${currentQuestion}`;
@@ -141,7 +142,7 @@ function checkCheckpoint() {
     const checkpointLimit = checkpoints[currentCheckpointIndex];
 
     // Se o usuário atingir o checkpoint atual
-    if (currentQuestion === checkpointLimit) {
+    if (currentQuestion === checkpointLimit + 1) {
         currentCheckpointIndex++; // Avança para o próximo checkpoint
         markCheckpoint(checkpointLimit); // Marca a checkbox
         resetProgressForNextCheckpoint(); // Reseta para o próximo conjunto
