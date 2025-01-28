@@ -75,6 +75,66 @@ html {
     outline: none;
     box-shadow: 0 0 4px rgba(76, 175, 80, 0.5);
 }
+/* Estilo dos contêineres de checkpoints */
+.checkpoints {
+    display: flex;
+    justify-content: space-between; /* Espaçamento uniforme entre os checkpoints */
+    align-items: center;
+    margin: 20px 0; /* Margem para separação de outros elementos */
+    padding: 10px;
+    background-color: #f5f5f5; /* Fundo leve */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo dos labels dos checkpoints */
+.checkpoints label {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer; /* Permite clicar no texto para selecionar */
+    gap: 5px; /* Espaço entre o texto e o checkbox */
+}
+
+/* Estilo dos checkboxes */
+.checkpoints input[type="checkbox"] {
+    appearance: none; /* Remove o estilo padrão do navegador */
+    width: 20px;
+    height: 20px;
+    border: 2px solid #4caf50; /* Cor da borda */
+    border-radius: 4px; /* Bordas arredondadas */
+    background-color: white; /* Fundo inicial */
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Estilo do checkbox marcado */
+.checkpoints input[type="checkbox"]:checked {
+    background-color: #4caf50; /* Cor do preenchimento */
+    border-color: #388e3c; /* Cor da borda ao ser marcado */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%23fff' d='M6 10.8l-3.7-3.7-1.4 1.4L6 13.5l9-9-1.4-1.4L6 10.8z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 70%;
+}
+
+/* Hover e foco */
+.checkpoints input[type="checkbox"]:hover {
+    border-color: #388e3c;
+}
+
+.checkpoints input[type="checkbox"]:focus {
+    outline: none;
+    box-shadow: 0 0 4px rgba(76, 175, 80, 0.5);
+}
+
+/* Texto do label ao lado do checkbox */
+.checkpoints label span {
+    font-weight: bold;
+    color: #4caf50;
+}
+
 .progress-container {
     width: 100%;
     background-color: #e0e0e0; /* Fundo da barra de progresso */
