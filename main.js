@@ -1,5 +1,24 @@
-let checkpoints = [50, 100, 150]; // Pontos de checkpoint
+// Função para gerar checkpoints dinamicamente
+function generateCheckpoints(totalQuestions, groupSize = 50) {
+    const checkpoints = [];
+    let currentTotal = 0;
+
+    // Adiciona checkpoints em grupos de "groupSize"
+    while (currentTotal + groupSize < totalQuestions) {
+        currentTotal += groupSize;
+        checkpoints.push(currentTotal);
+    }
+
+    // Adiciona o último grupo com o número restante
+    checkpoints.push(totalQuestions);
+
+    return checkpoints;
+}
+
 let currentCheckpointIndex = 0; // Índice do checkpoint atual
+const totalQuestions = 140; // Altere para o número total de perguntas
+const ultima_questao = totalQuestions; // Define a última questão
+const checkpoints = generateCheckpoints(totalQuestions); // Gera os checkpoints dinamicamente
 
 function toggleAnswer() {
     const answers = document.querySelector('.answers');
@@ -26,7 +45,6 @@ function toggleAnswer() {
 }
 
 let currentQuestion = 1; // Começa na pergunta 1
-const totalQuestions = 140; // Altere para o número total de perguntas
 
 function navigateQuestion(direction) {
     const questionElement = document.querySelector('.question');
@@ -35,16 +53,16 @@ function navigateQuestion(direction) {
     
     // Atualiza o índice da pergunta atual
     currentQuestion += direction;
+    console.log(currentQuestion);
 
     // Evita ir além dos limites
     if (currentQuestion < 1) currentQuestion = 1;
-    if (currentQuestion > totalQuestions) currentQuestion = totalQuestions;
+    if (currentQuestion > ultima_questao) currentQuestion = ultima_questao;
 
     // Atualiza o conteúdo da pergunta e resposta (substitua as imagens pelo formato correspondente)
     questionElement.querySelector('h2').innerText = `Pergunta ${currentQuestion}`;
     questionElement.querySelector('img').src = `/img/pergunta_${currentQuestion}.jpg`;
     questionElement.querySelector('img').alt = `Pergunta ${currentQuestion}`;
-    
     answersElement.querySelector('img').src = `/img/resposta_${currentQuestion}.jpg`;
     answersElement.querySelector('img').alt = `Resposta ${currentQuestion}`;
 
@@ -125,7 +143,6 @@ function resetToFirstQuestion() {
     questionElement.querySelector('h2').innerText = `Pergunta ${currentQuestion}`;
     questionElement.querySelector('img').src = `/img/pergunta_${currentQuestion}.jpg`;
     questionElement.querySelector('img').alt = `Pergunta ${currentQuestion}`;
-    
     answersElement.querySelector('img').src = `/img/resposta_${currentQuestion}.jpg`;
     answersElement.querySelector('img').alt = `Resposta ${currentQuestion}`;
 
@@ -141,18 +158,25 @@ function resetToFirstQuestion() {
 function checkCheckpoint() {
     const checkpointLimit = checkpoints[currentCheckpointIndex];
 
-    // Se o usuário atingir o checkpoint atual
-    if (currentQuestion === checkpointLimit + 1) {
+    // Verifica se o estudante avançou para além do checkpoint atual
+    if (currentQuestion === checkpointLimit + 1 && currentCheckpointIndex < checkpoints.length - 1) {
         currentCheckpointIndex++; // Avança para o próximo checkpoint
         markCheckpoint(checkpointLimit); // Marca a checkbox
         resetProgressForNextCheckpoint(); // Reseta para o próximo conjunto
+    }
+
+    // Verifica se está na última questão e se o botão "Avançar" foi clicado na última pergunta
+    if (currentQuestion === ultima_questao && currentCheckpointIndex === checkpoints.length - 1) {
+        markCheckpoint(ultima_questao); // Marca o último checkpoint
     }
 }
 function markCheckpoint(limit) {
     const checkbox = document.querySelector(`#checkpoint-${limit}`);
     if (checkbox) {
         checkbox.checked = true;
-        alert(`Parabéns! Você concluiu as perguntas de ${limit - 49} a ${limit}.`);
+        alert(`Parabéns! Você concluiu as perguntas de ${limit - (limit % 50 || 49)} a ${limit}.`);
+    } else {
+        console.warn(`Checkpoint não encontrado para o limite ${limit}. Verifique o ID do elemento.`);
     }
 }
 function resetProgressForNextCheckpoint() {
