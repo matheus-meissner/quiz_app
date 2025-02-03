@@ -112,7 +112,7 @@ function goToQuestion() {
     const answersElement = document.querySelector('.answers');
     const toggleButton = document.getElementById('toggle-answer');
 
-    // Valida se o elemento foi encontrado
+    // Valida se os elementos foram encontrados
     if (!questionInput || !questionElement || !answersElement || !toggleButton) {
         console.error("Um ou mais elementos necessários não foram encontrados.");
         return;
@@ -130,6 +130,14 @@ function goToQuestion() {
     // Atualiza a pergunta atual
     currentQuestion = targetQuestion;
 
+    // 🔥 Atualiza o índice do checkpoint corretamente
+    for (let i = 0; i < checkpoints.length; i++) {
+        if (currentQuestion <= checkpoints[i]) {
+            currentCheckpointIndex = i;
+            break;
+        }
+    }
+
     // Atualiza o conteúdo da pergunta e resposta
     questionElement.querySelector('h2').innerText = `Pergunta ${currentQuestion}`;
     questionElement.querySelector('img').src = `/img/pergunta_${currentQuestion}.jpg`;
@@ -140,15 +148,34 @@ function goToQuestion() {
 
     // Atualiza a barra de progresso
     updateProgressBar();
+
+    // 🔥 Agora os checkpoints são atualizados corretamente ao pesquisar
+    checkCheckpoint();
 }
+
+
+
 function updateProgressBar() {
     const progressBar = document.getElementById('progress-bar');
-    const checkpointStart = checkpoints[currentCheckpointIndex - 1] || 1; // Início do intervalo
-    const checkpointEnd = checkpoints[currentCheckpointIndex] || totalQuestions; // Fim do intervalo
 
-    const progressPercentage = ((currentQuestion - checkpointStart + 1) / (checkpointEnd - checkpointStart + 1)) * 100;
+    // Determina o intervalo correto para o progresso
+    let checkpointStart = 1;
+    let checkpointEnd = checkpoints[0]; // Inicializa como o primeiro checkpoint
+
+    for (let i = 0; i < checkpoints.length; i++) {
+        if (currentQuestion > checkpoints[i]) {
+            checkpointStart = checkpoints[i]; // Último checkpoint ultrapassado
+            checkpointEnd = checkpoints[i + 1] || totalQuestions; // Próximo checkpoint ou total de questões
+        }
+    }
+
+    // Calcula o progresso dentro do intervalo correto
+    let progressPercentage = ((currentQuestion - checkpointStart + 1) / (checkpointEnd - checkpointStart + 1)) * 100;
+
     progressBar.style.width = `${progressPercentage}%`;
 }
+
+
 function resetToFirstQuestion() {
     const questionElement = document.querySelector('.question');
     const answersElement = document.querySelector('.answers');
@@ -160,8 +187,8 @@ function resetToFirstQuestion() {
         return;
     }
 
-    // Redefine a pergunta para a 1ª do checkpoint atual
-    const checkpointStart = checkpoints[currentCheckpointIndex - 1] || 1;
+    // 🔥 Corrigindo para pegar a PRIMEIRA pergunta do checkpoint atual
+    const checkpointStart = checkpoints[currentCheckpointIndex - 1] ? checkpoints[currentCheckpointIndex - 1] + 1 : 1;
     currentQuestion = checkpointStart;
 
     // Atualiza o conteúdo da pergunta e resposta
@@ -177,33 +204,42 @@ function resetToFirstQuestion() {
     toggleButton.style.backgroundColor = '#4caf50'; // Verde para "Ver Resposta"
     toggleButton.style.width = '120px';
 
-    // Atualiza a barra de progresso
+    // 🔥 Reseta o progresso corretamente
     updateProgressBar();
 }
+
+
 function checkCheckpoint() {
-    const checkpointLimit = checkpoints[currentCheckpointIndex];
+    checkpoints.forEach((limit, index) => {
+        if (currentQuestion > limit) {
+            markCheckpoint(limit); // Marca o checkpoint se passou
+            currentCheckpointIndex = index + 1; // Atualiza o índice do checkpoint atual
+        } else {
+            unmarkCheckpoint(limit); // Desmarca o checkpoint se voltou
+        }
+    });
 
-    // Verifica se o estudante avançou para além do checkpoint atual
-    if (currentQuestion === checkpointLimit + 1 && currentCheckpointIndex < checkpoints.length - 1) {
-        currentCheckpointIndex++; // Avança para o próximo checkpoint
-        markCheckpoint(checkpointLimit); // Marca a checkbox
-        resetProgressForNextCheckpoint(); // Reseta para o próximo conjunto
-    }
+    updateProgressBar(); // Atualiza a barra de progresso
+}
 
-    // Verifica se está na última questão e se o botão "Avançar" foi clicado na última pergunta
-    if (currentQuestion === ultima_questao && currentCheckpointIndex === checkpoints.length - 1) {
-        markCheckpoint(ultima_questao); // Marca o último checkpoint
+function unmarkCheckpoint(limit) {
+    const checkbox = document.querySelector(`#checkpoint-${limit}`);
+
+    if (checkbox && checkbox.checked) { // Só desmarca se estiver marcado
+        checkbox.checked = false;
     }
 }
+
+
 function markCheckpoint(limit) {
     const checkbox = document.querySelector(`#checkpoint-${limit}`);
-    if (checkbox) {
+
+    if (checkbox && !checkbox.checked) { // Só marca se ainda não estiver marcado
         checkbox.checked = true;
-        alert(`Parabéns! Você concluiu as perguntas de ${limit - (limit % 50 || 49)} a ${limit}.`);
-    } else {
-        console.warn(`Checkpoint não encontrado para o limite ${limit}. Verifique o ID do elemento.`);
+        alert(`Parabéns! Você passou da questão ${limit} e o checkpoint foi marcado.`);
     }
 }
+
 function resetProgressForNextCheckpoint() {
     if (currentCheckpointIndex < checkpoints.length) {
         currentQuestion = checkpoints[currentCheckpointIndex - 1] + 1;
