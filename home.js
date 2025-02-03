@@ -9,5 +9,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Função para redirecionar à tela de prática
 function startPractice() {
-    window.location.href = "simulado.html"; // Altere para o caminho correto do simulado
+    window.location.href = "metodos.html"; // Altere para o caminho correto do simulado
 }

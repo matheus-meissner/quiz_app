@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Métodos</title>
+    <link rel="stylesheet" href="metodos.css">
+    <link rel="icon" href="/img/metodos_icone.png" type="image/x-icon">
+</head>
+<body>
+    <header class="header">
+        <button class="back-button" onclick="goBack()">⟵</button>
+        <h1>🏅 Métodos 🏅</h1>
+    </header>
+
+    <main class="main-container">
+        <p>Selecione um método de estudo:</p>
+        <div class="methods-container">
+            <button class="method-button" onclick="selectMethod(30)">30 Questões</button>
+            <button class="method-button" onclick="selectMethod(50)">50 Questões</button>
+            <button class="method-button" onclick="selectMethod(100)">100 Questões</button>
+        </div>
+    </main>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modal">
+        <div class="modal-content">
+            <p id="modal-text">Texto genérico sobre o tempo necessário para terminar os estudos.</p>
+            <button onclick="closeModal()">Fechar</button>
+        </div>
+    </div>
+
+    <script src="metodos.js"></script>
+</body>
+</html>
