@@ -30,13 +30,39 @@ function renderCheckpoints(checkpoints) {
         // Cria o elemento de checkpoint
         const label = document.createElement('label');
         label.innerHTML = `
-            <input type="checkbox" id="checkpoint-${limit}" disabled />
+            <input type="checkbox" id="checkpoint-${limit}" />
             Checkpoint ${checkpointNumber}
         `;
+
+        // Adiciona evento de clique à checkbox para levar à primeira pergunta do próximo checkpoint
+        const checkbox = label.querySelector(`#checkpoint-${limit}`);
+        checkbox.addEventListener('click', () => handleCheckpointClick(limit, index));
 
         // Adiciona ao container
         container.appendChild(label);
     });
+}
+
+function handleCheckpointClick(limit, index) {
+    // Marca o checkpoint manualmente
+    markCheckpoint(limit);
+
+    // Atualiza o índice do checkpoint atual
+    currentCheckpointIndex = index + 1;
+
+    // Define a primeira pergunta do próximo checkpoint
+    const nextCheckpointStart = checkpoints[currentCheckpointIndex] ? checkpoints[currentCheckpointIndex - 1] + 1 : totalQuestions;
+    currentQuestion = nextCheckpointStart;
+
+    // Atualiza a interface
+    document.querySelector('.question h2').innerText = `Pergunta ${currentQuestion}`;
+    document.querySelector('.question img').src = `/img/pergunta_${currentQuestion}.jpg`;
+    document.querySelector('.question img').alt = `Pergunta ${currentQuestion}`;
+    document.querySelector('.answers img').src = `/img/resposta_${currentQuestion}.jpg`;
+    document.querySelector('.answers img').alt = `Resposta ${currentQuestion}`;
+
+    // Atualiza a barra de progresso
+    updateProgressBar();
 }
 
 let currentCheckpointIndex = 0; // Índice do checkpoint atual
