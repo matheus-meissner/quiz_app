@@ -44,15 +44,31 @@ function renderCheckpoints(checkpoints) {
 }
 
 function handleCheckpointClick(limit, index) {
-    // Marca o checkpoint manualmente
-    markCheckpoint(limit);
+    const checkbox = document.querySelector(`#checkpoint-${limit}`);
 
-    // Atualiza o índice do checkpoint atual
-    currentCheckpointIndex = index + 1;
+    if (checkbox.checked) {
+        // ✅ Se o estudante marcou o checkpoint, avança para o próximo intervalo
+        markCheckpoint(limit);
+        currentCheckpointIndex = index + 1;
+        currentQuestion = checkpoints[currentCheckpointIndex - 1] + 1 || totalQuestions;
 
-    // Define a primeira pergunta do próximo checkpoint
-    const nextCheckpointStart = checkpoints[currentCheckpointIndex] ? checkpoints[currentCheckpointIndex - 1] + 1 : totalQuestions;
-    currentQuestion = nextCheckpointStart;
+        // 🔥 Marcar automaticamente todos os checkpoints anteriores
+        for (let i = 0; i <= index; i++) {
+            markCheckpoint(checkpoints[i]);
+        }
+    } else {
+        // 🔥 Se o estudante desmarcou, volta para o início do checkpoint anterior corretamente
+        unmarkCheckpoint(limit);
+        currentCheckpointIndex = index; // Mantém o índice correto
+
+        // Define a primeira pergunta do checkpoint anterior
+        currentQuestion = currentCheckpointIndex > 0 ? checkpoints[currentCheckpointIndex - 1] + 1 : 1;
+
+        // 🔥 Desmarcar automaticamente todos os checkpoints seguintes
+        for (let i = index + 1; i < checkpoints.length; i++) {
+            unmarkCheckpoint(checkpoints[i]);
+        }
+    }
 
     // Atualiza a interface
     document.querySelector('.question h2').innerText = `Pergunta ${currentQuestion}`;
@@ -64,7 +80,6 @@ function handleCheckpointClick(limit, index) {
     // Atualiza a barra de progresso
     updateProgressBar();
 }
-
 let currentCheckpointIndex = 0; // Índice do checkpoint atual
 const totalQuestions = 140; // Altere para o número total de perguntas
 const ultima_questao = totalQuestions; // Define a última questão
