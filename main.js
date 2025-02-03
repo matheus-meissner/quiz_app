@@ -287,3 +287,9 @@ function resetProgressForNextCheckpoint() {
         updateProgressBar();
     }
 }
+// Função para redirecionar à tela inicial
+function goBack() {
+    window.location.href = "index.html"; // Certifique-se de que o caminho esteja correto
+}
+
+
