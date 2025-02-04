@@ -215,6 +215,47 @@ main h5 {
 #exame:hover {
     background-color: #307ed8;
 }
+#exam-date {
+    color: #45a049;
+    font-weight: 700;
+    margin-top: 0;
+}
+
+/* Estilizando o container */
+#start-options {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    margin-top: 5px;
+}
+
+/* Estilizar os inputs escondendo-os */
+#start-options input[type="radio"] {
+    display: none; /* Esconde os botões de rádio padrão */
+}
+
+/* Estilo para os botões personalizados */
+#start-options label {
+    cursor: pointer;
+    font-size: 12px;
+    padding: 10px 20px;
+    border: 1px solid #4caf50;
+    border-radius: 5px;
+    background-color: #4caf50;
+    color: white;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+/* Quando o botão está selecionado */
+#start-options input[type="radio"]:checked + span {
+    /* background-color: #4caf50;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+    border: 1px solid #69f16d;
+}
+
+
 .custom-method {
     display: flex;
     flex-direction: column; /* Empilha verticalmente o input e o botão */

@@ -115,19 +115,19 @@ function updateModalText(checkpoints) {
         checkpoints.forEach((_, i) => {
             const checkpointDate = new Date(today);
             checkpointDate.setDate(today.getDate() + i); // Adiciona dias para cada checkpoint
-            scheduleHTML += `<p>${formatDate(checkpointDate)} - Checkpoint ${i + 1}</p>`;
+            scheduleHTML += `<p><b>${formatDate(checkpointDate)}</b> - <i>Checkpoint ${i + 1}</i></p>`;
         });
 
         // Adiciona a data de revisão completa
         const reviewDate = new Date(today);
         reviewDate.setDate(today.getDate() + totalCheckpoints);
-        scheduleHTML += `<p>${formatDate(reviewDate)} - Revisão Completa</p>`;
+        scheduleHTML += `<p><b>${formatDate(reviewDate)}</b> - <i>Revisão Completa</b></p>`;
         scheduleDetailsElement.innerHTML = scheduleHTML;
 
         // Define a data sugerida para o exame
         const examDate = new Date(reviewDate);
         examDate.setDate(reviewDate.getDate() + 1);
-        examDateElement.textContent = `${formatDate(examDate)}`;
+        examDateElement.textContent = `🏆${formatDate(examDate)}🏆`;
     }
 }
 
