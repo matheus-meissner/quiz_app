@@ -14,11 +14,34 @@
     </header>
 
     <main class="main-container">
-        <h2>Selecione um método de estudo:</h2>
-        <div class="methods-container">
-            <button class="method-button" onclick="selectMethod(30)">30 Questões</button>
-            <button class="method-button" onclick="selectMethod(50)">50 Questões</button>
-            <button class="method-button" onclick="selectMethod(100)">100 Questões</button>
+        <div class="methods">
+            <h2>Selecione um método de estudo:</h2>
+            <h5>Escolha quantas questões quer estudar por dia</h5>
+            <div class="methods-container">
+                <button class="method-button" onclick="selectMethod(30)">30 Questões</button>
+                <button class="method-button" onclick="selectMethod(50)">50 Questões</button>
+                <button class="method-button" onclick="selectMethod(100)">100 Questões</button>
+            </div>
+        </div>
+        <div class="methods">
+            <h2>Personalize seu método de estudo:</h2>
+            <h5>Digite quantas questões quer estudar por dia</h5>
+            <div class="custom-method">
+                <input 
+                    type="number" 
+                    id="customQuestions" 
+                    placeholder="Você consegue!" 
+                    min="1" 
+                    max="100" 
+                    class="custom-input"
+                />
+                <button 
+                    class="custom-button" 
+                    onclick="selectCustomMethod()"
+                >
+                    Escolher
+                </button>
+            </div>
         </div>
     </main>
 

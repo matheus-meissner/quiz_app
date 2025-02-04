@@ -35,6 +35,11 @@ button.back-button {
 }
 
 main.main-container {
+    display: flex; /* Ativa Flexbox */
+    flex-direction: column; /* Alinha itens verticalmente */
+    align-items: center; /* Centraliza horizontalmente */
+    justify-content: center; /* Centraliza verticalmente */
+    height: 100%; /* Garante que a altura seja respeitada */
     max-width: 800px;
     margin: 30px auto;
     padding: 20px;
@@ -46,7 +51,24 @@ main.main-container {
 
 main h2 {
     font-size: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
+}
+
+main h5 {
+    margin: 0 0;
+}
+
+.methods {
+    width: 100%; /* Ajusta para ocupar o espaço necessário */
+    max-width: 700px; /* Limita a largura máxima */
+    padding: 20px;
+    margin: 10px;
+    background-color: #f8f8f8;
+    border: 2px solid #4caf50;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .methods-container {
@@ -110,6 +132,42 @@ main h2 {
 .modal-content button:hover {
     background-color: #45a049;
 }
+
+.custom-method {
+    display: flex;
+    flex-direction: column; /* Empilha verticalmente o input e o botão */
+    align-items: center; /* Centraliza horizontalmente */
+    padding: 20px;
+    margin: 10px;
+    gap: 10px; /* Espaço entre input e botão */
+}
+
+.custom-input {
+    padding: 10px;
+    border: 2px solid #4caf50;
+    border-radius: 8px;
+    font-size: 16px;
+    width: 180px; /* Ajuste da largura */
+    text-align: center;
+}
+
+.custom-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.custom-button:hover {
+    background-color: #45a049;
+}
+
+
+
 footer.footer {
     position: fixed; /* Fixa o footer na tela */
     bottom: 0; /* Cola o footer na parte inferior */
