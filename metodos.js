@@ -55,16 +55,36 @@ function updateModalText(checkpoints) {
     const modalDetailsElement = document.getElementById('modal-details'); // Seleciona o elemento dos detalhes
 
     if (modalTitleElement && modalDetailsElement) {
-        const totalCheckpoints = checkpoints.length;
-        const checkpointDetails = checkpoints
-            .map((q, i) => `<p>Checkpoint ${i + 1}: ${q} questões</p>`)
-            .join(''); // Cria uma lista de <p> para cada checkpoint
+        const totalCheckpoints = checkpoints.length; // Número total de checkpoints
 
-        // Atualiza o título e os detalhes separadamente
-        modalTitleElement.textContent = `Serão ${totalCheckpoints} checkpoints no total:`;
-        modalDetailsElement.innerHTML = checkpointDetails; // Insere os checkpoints como HTML
+        // Atualiza o título
+        modalTitleElement.textContent = `Serão ${totalCheckpoints} checkpoints no total`;
+
+        let detailsHTML = '';
+
+        // Caso tenha 1 ou 2 checkpoints, segue o padrão antigo (lista separada)
+        if (totalCheckpoints <= 2) {
+            detailsHTML = checkpoints
+                .map((q, i) => `<p>Checkpoint ${i + 1}: ${q} Questões</p>`)
+                .join('');
+        } else {
+            // Para mais de 2 checkpoints, exibe o formato consolidado
+            const regularCheckpoints = totalCheckpoints - 1; // Total de checkpoints regulares
+            const regularQuestions = checkpoints[0]; // Número de questões em checkpoints regulares
+            const lastCheckpointQuestions = checkpoints[checkpoints.length - 1]; // Questões do último checkpoint
+
+            if (regularCheckpoints > 0) {
+                detailsHTML += `<p>Checkpoints de 1 a ${regularCheckpoints}: ${regularQuestions} Questões</p>`;
+            }
+            detailsHTML += `<p>Checkpoint ${totalCheckpoints}: ${lastCheckpointQuestions} Questões</p>`;
+        }
+
+        // Atualiza os detalhes da modal
+        modalDetailsElement.innerHTML = detailsHTML;
     }
 }
+
+
 
 
 // Função para exibir a modal

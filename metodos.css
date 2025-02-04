@@ -148,6 +148,17 @@ main h5 {
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
+#modal-title {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#modal-details p {
+    margin: 0;
+    margin-bottom: 5px;
+    padding: 0;
+}
+
 .modal-buttons {
     display: flex; /* Ativa Flexbox */
     flex-direction: column;
