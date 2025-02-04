@@ -65,7 +65,10 @@ function updateModalText(checkpoints) {
         // Caso tenha 1 ou 2 checkpoints, segue o padrão antigo (lista separada)
         if (totalCheckpoints <= 2) {
             detailsHTML = checkpoints
-                .map((q, i) => `<p>Checkpoint ${i + 1}: ${q} Questões</p>`)
+                .map(
+                    (q, i) =>
+                        `<p>Checkpoint <b>${i + 1}</b>: <b><i>${q} Questões</i></b></p>`
+                )
                 .join('');
         } else {
             // Para mais de 2 checkpoints, exibe o formato consolidado
@@ -74,15 +77,16 @@ function updateModalText(checkpoints) {
             const lastCheckpointQuestions = checkpoints[checkpoints.length - 1]; // Questões do último checkpoint
 
             if (regularCheckpoints > 0) {
-                detailsHTML += `<p>Checkpoints de 1 a ${regularCheckpoints}: ${regularQuestions} Questões</p>`;
+                detailsHTML += `<p>Checkpoints de <b>1</b> a <b>${regularCheckpoints}</b>: <b><i>${regularQuestions} Questões</i></b></p>`;
             }
-            detailsHTML += `<p>Checkpoint ${totalCheckpoints}: ${lastCheckpointQuestions} Questões</p>`;
+            detailsHTML += `<p>Checkpoint <b>${totalCheckpoints}</b>: <b><i>${lastCheckpointQuestions} Questões</i></b></p>`;
         }
 
         // Atualiza os detalhes da modal
         modalDetailsElement.innerHTML = detailsHTML;
     }
 }
+
 
 
 
