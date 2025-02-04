@@ -18,6 +18,21 @@ function selectMethod(questions) {
     showModal();
 }
 
+function selectCustomMethod() {
+    const customInput = document.getElementById('customQuestions'); // Obtém o input personalizado
+    const customValue = parseInt(customInput.value, 10); // Converte para número inteiro
+
+    // Verifica se o valor é válido
+    if (isNaN(customValue) || customValue < 1 || customValue > totalQuestions) {
+        alert(`Por favor, insira um número entre 1 e ${totalQuestions}.`);
+        return;
+    }
+
+    // Chama a função selectMethod com o valor personalizado
+    selectMethod(customValue);
+}
+
+
 // Função para calcular o número de checkpoints
 function calculateCheckpoints(totalQuestions, method) {
     const numCheckpoints = Math.ceil(totalQuestions / method); // Número total de checkpoints
