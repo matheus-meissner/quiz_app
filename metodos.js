@@ -51,17 +51,21 @@ function calculateCheckpoints(totalQuestions, method) {
 
 // Função para atualizar o texto na modal
 function updateModalText(checkpoints) {
-    const modalTextElement = document.getElementById('modal-text');
-    if (modalTextElement) {
-        const totalCheckpoints = checkpoints.length;
-        const checkpointDetails = checkpoints.map((q, i) => `Checkpoint ${i + 1}: ${q} questões`).join('<br>');
+    const modalTitleElement = document.getElementById('modal-title'); // Seleciona o elemento do título
+    const modalDetailsElement = document.getElementById('modal-details'); // Seleciona o elemento dos detalhes
 
-        modalTextElement.innerHTML = `
-            Serão ${totalCheckpoints} checkpoints no total:<br>
-            ${checkpointDetails}
-        `;
+    if (modalTitleElement && modalDetailsElement) {
+        const totalCheckpoints = checkpoints.length;
+        const checkpointDetails = checkpoints
+            .map((q, i) => `<p>Checkpoint ${i + 1}: ${q} questões</p>`)
+            .join(''); // Cria uma lista de <p> para cada checkpoint
+
+        // Atualiza o título e os detalhes separadamente
+        modalTitleElement.textContent = `Serão ${totalCheckpoints} checkpoints no total:`;
+        modalDetailsElement.innerHTML = checkpointDetails; // Insere os checkpoints como HTML
     }
 }
+
 
 // Função para exibir a modal
 function showModal() {
