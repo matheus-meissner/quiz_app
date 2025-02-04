@@ -289,7 +289,7 @@ function resetProgressForNextCheckpoint() {
 }
 // Função para redirecionar à tela inicial
 function goBack() {
-    window.location.href = "index.html"; // Certifique-se de que o caminho esteja correto
+    window.location.href = "metodos.html"; // Certifique-se de que o caminho esteja correto
 }
 
 

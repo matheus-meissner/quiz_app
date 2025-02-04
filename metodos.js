@@ -11,7 +11,6 @@ function selectMethod(questions) {
 
     // Atualiza o texto na modal com os checkpoints
     updateModalText(checkpoints);
-
     // Exibe a modal
     showModal();
 }
@@ -57,9 +56,7 @@ function showModal() {
 // Função para fechar a modal
 function closeModal() {
     const modal = document.getElementById('modal');
-    if (modal) {
-        modal.style.display = 'none'; // Oculta a modal
-    }
+    window.location.href = "simulado.html";
 }
 
 // Função para voltar à página inicial
