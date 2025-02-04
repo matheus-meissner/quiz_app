@@ -53,16 +53,25 @@ function calculateCheckpoints(totalQuestions, method) {
 function updateModalText(checkpoints) {
     const modalTitleElement = document.getElementById('modal-title'); // Seleciona o elemento do título
     const modalDetailsElement = document.getElementById('modal-details'); // Seleciona o elemento dos detalhes
+    const studyDaysElement = document.getElementById('study-days'); // Seleciona o elemento para os dias de estudo
+    const scheduleDetailsElement = document.getElementById('schedule-details'); // Seleciona o elemento do cronograma
+    const examDateElement = document.getElementById('exam-date'); // Seleciona o elemento da data do exame
 
-    if (modalTitleElement && modalDetailsElement) {
+    if (
+        modalTitleElement &&
+        modalDetailsElement &&
+        studyDaysElement &&
+        scheduleDetailsElement &&
+        examDateElement
+    ) {
         const totalCheckpoints = checkpoints.length; // Número total de checkpoints
+        const totalDays = totalCheckpoints + 1; // Total de dias de estudo (checkpoints + revisão)
 
         // Atualiza o título
         modalTitleElement.textContent = `Serão ${totalCheckpoints} checkpoints no total`;
 
+        // Atualiza os detalhes dos checkpoints
         let detailsHTML = '';
-
-        // Caso tenha 1 ou 2 checkpoints, segue o padrão antigo (lista separada)
         if (totalCheckpoints <= 2) {
             detailsHTML = checkpoints
                 .map(
@@ -71,23 +80,48 @@ function updateModalText(checkpoints) {
                 )
                 .join('');
         } else {
-            // Para mais de 2 checkpoints, exibe o formato consolidado
-            const regularCheckpoints = totalCheckpoints - 1; // Total de checkpoints regulares
-            const regularQuestions = checkpoints[0]; // Número de questões em checkpoints regulares
-            const lastCheckpointQuestions = checkpoints[checkpoints.length - 1]; // Questões do último checkpoint
+            const regularCheckpoints = totalCheckpoints - 1;
+            const regularQuestions = checkpoints[0];
+            const lastCheckpointQuestions = checkpoints[checkpoints.length - 1];
 
             if (regularCheckpoints > 0) {
                 detailsHTML += `<p>Checkpoints de <b>1</b> a <b>${regularCheckpoints}</b>: <b><i>${regularQuestions} Questões</i></b></p>`;
             }
             detailsHTML += `<p>Checkpoint <b>${totalCheckpoints}</b>: <b><i>${lastCheckpointQuestions} Questões</i></b></p>`;
         }
-
-        // Atualiza os detalhes da modal
         modalDetailsElement.innerHTML = detailsHTML;
+
+        // Atualiza o total de dias de estudo
+        studyDaysElement.textContent = `Totalizando ${totalDays} dias de estudo`;
+
+        // Gera o cronograma de datas
+        const today = new Date(); // Data atual
+        let scheduleHTML = '';
+        checkpoints.forEach((_, i) => {
+            const checkpointDate = new Date(today);
+            checkpointDate.setDate(today.getDate() + i); // Adiciona dias para cada checkpoint
+            scheduleHTML += `<p>${formatDate(checkpointDate)} - Checkpoint ${i + 1}</p>`;
+        });
+
+        // Adiciona a data de revisão completa
+        const reviewDate = new Date(today);
+        reviewDate.setDate(today.getDate() + totalCheckpoints);
+        scheduleHTML += `<p>${formatDate(reviewDate)} - Revisão Completa</p>`;
+        scheduleDetailsElement.innerHTML = scheduleHTML;
+
+        // Define a data sugerida para o exame
+        const examDate = new Date(reviewDate);
+        examDate.setDate(reviewDate.getDate() + 1);
+        examDateElement.textContent = `${formatDate(examDate)}`;
     }
 }
 
-
+// Função para formatar datas no estilo DD/MM
+function formatDate(date) {
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Meses começam do 0
+    return `${day}/${month}`;
+}
 
 
 

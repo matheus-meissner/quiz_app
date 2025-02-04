@@ -123,22 +123,25 @@ main h5 {
     display: flex; /* Ativa Flexbox */
     flex-direction: column; /* Alinha itens verticalmente */
     align-items: center; /* Centraliza horizontalmente */
-    justify-content: center; /* Centraliza verticalmente */
-    height: 100%; /* Garante que a altura seja respeitada */
-    width: 400px;
-    height: 400px;
+    justify-content: flex-start; /* Garante que o conteúdo fique no topo */
+    height: 700px; /* Mantém a altura definida */
+    width: 500px;
+    max-height: 700px; /* Limita a altura máxima */
     background: white;
     padding: 20px;
     border-radius: 8px;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: auto; /* Adiciona barra de rolagem quando o conteúdo exceder */
 }
 
 .modal-frame {
     display: flex; /* Ativa Flexbox */
     flex-direction: column; /* Organiza os itens verticalmente */
+    justify-content: flex-start; /* Garante que o conteúdo fique no topo */
     width: 90%; /* Ajusta para ocupar o espaço necessário */
-    height: 90%;
+    height: 700px;
+    max-height: 700px; /* Limita a altura máxima */
     padding: 20px;
     background-color: #f8f8f8;
     border: 2px solid #4caf50;
@@ -146,6 +149,7 @@ main h5 {
     text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s, box-shadow 0.2s;
+    overflow: auto; /* Adiciona barra de rolagem se necessário */
 }
 
 #modal-title {
