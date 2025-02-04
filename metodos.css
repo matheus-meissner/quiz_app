@@ -55,6 +55,8 @@ main h2 {
 }
 
 main h5 {
+    font-weight: 50;
+    font-style: italic;
     margin: 0 0;
 }
 
