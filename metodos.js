@@ -49,8 +49,19 @@ function calculateCheckpoints(totalQuestions, method) {
     return checkpoints;
 }
 
+let scheduleStartDate = 'today'; // Variável para controlar o início das datas
+
+function updateSchedule(start) {
+    scheduleStartDate = start; // Atualiza o início (hoje ou amanhã)
+    const checkpoints = JSON.parse(localStorage.getItem('checkpoints')); // Recupera os checkpoints
+    if (checkpoints) {
+        updateModalText(checkpoints); // Recalcula as datas com base na escolha
+    }
+}
+
 // Função para atualizar o texto na modal
 function updateModalText(checkpoints) {
+    localStorage.setItem('checkpoints', JSON.stringify(checkpoints));
     const modalTitleElement = document.getElementById('modal-title'); // Seleciona o elemento do título
     const modalDetailsElement = document.getElementById('modal-details'); // Seleciona o elemento dos detalhes
     const studyDaysElement = document.getElementById('study-days'); // Seleciona o elemento para os dias de estudo
@@ -96,6 +107,10 @@ function updateModalText(checkpoints) {
 
         // Gera o cronograma de datas
         const today = new Date(); // Data atual
+        if (scheduleStartDate === 'tomorrow') {
+            today.setDate(today.getDate() + 1); // Ajusta a data inicial para amanhã
+        }
+
         let scheduleHTML = '';
         checkpoints.forEach((_, i) => {
             const checkpointDate = new Date(today);
