@@ -34,7 +34,6 @@ button.back-button {
 main.main-container {
     max-width: 800px;
     margin: 30px auto;
-    margin-bottom: 57.3vh;
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
@@ -93,10 +92,15 @@ main h2 {
 }
 
 footer.footer {
+    position: fixed; /* Fixa o footer na tela */
+    bottom: 0; /* Cola o footer na parte inferior */
+    left: 0;
+    width: 100%; /* Faz o footer ocupar toda a largura */
     text-align: center;
     padding: 10px;
     background: linear-gradient(to right, #4caf50, #87e6a9);
-    margin-top: 20px;
     font-size: 12px;
     color: #fff;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra para separação */
+    z-index: 10; /* Garante que fique acima de outros elementos */
 }
