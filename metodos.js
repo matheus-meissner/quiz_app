@@ -74,6 +74,12 @@ function showModal() {
 // Função para fechar a modal
 function closeModal() {
     const modal = document.getElementById('modal');
+    if (modal) {
+        modal.style.display = 'none'; // Torna a modal invisível
+    }
+}
+
+function irSimulado() {
     window.location.href = "simulado.html";
 }
 
