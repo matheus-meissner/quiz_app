@@ -6,6 +6,9 @@ let selectedMethod = null;
 function selectMethod(questions) {
     selectedMethod = questions; // Armazena o método selecionado
 
+    // Salva o método no localStorage para ser acessado no main.js
+    localStorage.setItem('selectedMethod', selectedMethod);
+
     // Calcula o número de checkpoints
     const checkpoints = calculateCheckpoints(totalQuestions, selectedMethod);
 

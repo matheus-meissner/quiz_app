@@ -1,15 +1,14 @@
 // Função para gerar checkpoints dinamicamente
-function generateCheckpoints(totalQuestions, groupSize = 50) {
+function generateCheckpoints(totalQuestions, method) {
     const checkpoints = [];
     let currentTotal = 0;
 
-    // Adiciona checkpoints em grupos de "groupSize"
-    while (currentTotal + groupSize < totalQuestions) {
-        currentTotal += groupSize;
+    while (currentTotal + method < totalQuestions) {
+        currentTotal += method;
         checkpoints.push(currentTotal);
     }
 
-    // Adiciona o último grupo com o número restante
+    // Adiciona o último checkpoint com o restante das questões
     checkpoints.push(totalQuestions);
 
     return checkpoints;
@@ -83,7 +82,8 @@ function handleCheckpointClick(limit, index) {
 let currentCheckpointIndex = 0; // Índice do checkpoint atual
 const totalQuestions = 140; // Altere para o número total de perguntas
 const ultima_questao = totalQuestions; // Define a última questão
-const checkpoints = generateCheckpoints(totalQuestions); // Gera os checkpoints dinamicamente
+const selectedMethod = parseInt(localStorage.getItem('selectedMethod'), 10) || 50; // Fallback para 50
+const checkpoints = generateCheckpoints(totalQuestions, selectedMethod);
 renderCheckpoints(checkpoints); // Renderiza os checkpoints no HTML
 
 function toggleAnswer() {
