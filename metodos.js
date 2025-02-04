@@ -82,12 +82,12 @@ function closeModal() {
         modal.style.display = 'none'; // Torna a modal invisível
     }
 }
-
 function irSimulado() {
     window.location.href = "simulado.html";
 }
-
-// Função para voltar à página inicial
+function agendarExame() {
+    window.location.href = "https://esi.microsoft.com", "_blank";
+}
 function goBack() {
-    window.location.href = "index.html"; // Ajuste o caminho conforme necessário
+    window.location.href = "index.html";
 }

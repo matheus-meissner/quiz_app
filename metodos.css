@@ -5,7 +5,15 @@ body {
     margin: 0;
     background-color: #e8f5e9; /* Fundo opcional */
 }
+a {
+    display: inline-block; /* Garante que o link respeite o layout do botão */
+    text-decoration: none; /* Remove o sublinhado do link */
+    color: inherit; /* Herda a cor do botão */
+}
 
+a button {
+    width: 100%; /* Garante que o botão ocupe toda a largura disponível */
+}
 header.header {
     position: relative; /* Necessário para o alinhamento absoluto do h1 */
     background: linear-gradient(to right, #4caf50, #87e6a9);
@@ -127,6 +135,8 @@ main h5 {
 }
 
 .modal-frame {
+    display: flex; /* Ativa Flexbox */
+    flex-direction: column; /* Organiza os itens verticalmente */
     width: 90%; /* Ajusta para ocupar o espaço necessário */
     height: 90%;
     padding: 20px;
@@ -138,9 +148,18 @@ main h5 {
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
+.modal-buttons {
+    display: flex; /* Ativa Flexbox */
+    flex-direction: column;
+    justify-content: center; /* Centraliza horizontalmente */
+    margin-top: auto; /* Empurra os botões para o final da div */
+    margin-left: auto;
+    margin-right: auto;
+    gap: 10px; /* Espaçamento entre os botões */
+    width: 60%;
+}
 
 .modal-frame button {
-    margin-top: 10px;
     padding: 10px 20px;
     background-color: #4caf50;
     color: white;
@@ -156,7 +175,6 @@ main h5 {
 }
 
 #close {
-    margin-top: 10px;
     padding: 10px 20px;
     background-color: #f44336;
     color: white;
@@ -166,7 +184,22 @@ main h5 {
     font-size: 14px;
     transition: background-color 0.3s ease;
 }
-
+#close:hover {
+    background-color: #d32f2f;
+}
+#exame {
+    padding: 10px 20px;
+    background-color: #368ff4;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+#exame:hover {
+    background-color: #307ed8;
+}
 .custom-method {
     display: flex;
     flex-direction: column; /* Empilha verticalmente o input e o botão */

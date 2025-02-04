@@ -51,8 +51,13 @@
             <div class="modal-frame">
                 <h3 id="modal-title"></h3> <!-- Elemento para o título -->
                 <div id="modal-details"></div> <!-- Elemento para os detalhes dos checkpoints -->
-                <button onclick="closeModal()" id="close">Fechar</button>
-                <button onclick="irSimulado()">Ir para o Simulado</button>
+                <div class="modal-buttons">
+                    <button onclick="irSimulado()">Ir para o Simulado</button>
+                    <a href="https://esi.microsoft.com" target="_blank">
+                        <button id="exame">Agendar Exame</button>
+                    </a>
+                    <button onclick="closeModal()" id="close">Fechar</button>
+                </div>
             </div>
         </div>
     </div>
