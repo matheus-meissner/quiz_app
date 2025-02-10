@@ -71,9 +71,9 @@ function handleCheckpointClick(limit, index) {
 
     // Atualiza a interface
     document.querySelector('.question h2').innerText = `Pergunta ${currentQuestion}`;
-    document.querySelector('.question img').src = `/img/pergunta_${currentQuestion}.jpg`;
+    document.querySelector('.question img').src = `/img/ia_102/pergunta_${currentQuestion}.jpg`;
     document.querySelector('.question img').alt = `Pergunta ${currentQuestion}`;
-    document.querySelector('.answers img').src = `/img/resposta_${currentQuestion}.jpg`;
+    document.querySelector('.answers img').src = `/img/ia_102/resposta_${currentQuestion}.jpg`;
     document.querySelector('.answers img').alt = `Resposta ${currentQuestion}`;
 
     // Atualiza a barra de progresso
@@ -127,9 +127,9 @@ function navigateQuestion(direction) {
 
     // Atualiza o conteúdo da pergunta e resposta (substitua as imagens pelo formato correspondente)
     questionElement.querySelector('h2').innerText = `Pergunta ${currentQuestion}`;
-    questionElement.querySelector('img').src = `/img/pergunta_${currentQuestion}.jpg`;
+    questionElement.querySelector('img').src = `/img/ia_102/pergunta_${currentQuestion}.jpg`;
     questionElement.querySelector('img').alt = `Pergunta ${currentQuestion}`;
-    answersElement.querySelector('img').src = `/img/resposta_${currentQuestion}.jpg`;
+    answersElement.querySelector('img').src = `/img/ia_102/resposta_${currentQuestion}.jpg`;
     answersElement.querySelector('img').alt = `Resposta ${currentQuestion}`;
 
     // Redefine o botão do cabeçalho para "Ver Resposta"
@@ -181,10 +181,10 @@ function goToQuestion() {
 
     // Atualiza o conteúdo da pergunta e resposta
     questionElement.querySelector('h2').innerText = `Pergunta ${currentQuestion}`;
-    questionElement.querySelector('img').src = `/img/pergunta_${currentQuestion}.jpg`;
+    questionElement.querySelector('img').src = `/img/ia_102/pergunta_${currentQuestion}.jpg`;
     questionElement.querySelector('img').alt = `Pergunta ${currentQuestion}`;
 
-    answersElement.querySelector('img').src = `/img/resposta_${currentQuestion}.jpg`;
+    answersElement.querySelector('img').src = `/img/ia_102/resposta_${currentQuestion}.jpg`;
     answersElement.querySelector('img').alt = `Resposta ${currentQuestion}`;
 
     // Atualiza a barra de progresso
@@ -234,9 +234,9 @@ function resetToFirstQuestion() {
 
     // Atualiza o conteúdo da pergunta e resposta
     questionElement.querySelector('h2').innerText = `Pergunta ${currentQuestion}`;
-    questionElement.querySelector('img').src = `/img/pergunta_${currentQuestion}.jpg`;
+    questionElement.querySelector('img').src = `/img/ia_102/pergunta_${currentQuestion}.jpg`;
     questionElement.querySelector('img').alt = `Pergunta ${currentQuestion}`;
-    answersElement.querySelector('img').src = `/img/resposta_${currentQuestion}.jpg`;
+    answersElement.querySelector('img').src = `/img/ia_102/resposta_${currentQuestion}.jpg`;
     answersElement.querySelector('img').alt = `Resposta ${currentQuestion}`;
 
     // Esconde a resposta e redefine o botão de resposta

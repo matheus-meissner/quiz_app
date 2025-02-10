@@ -156,7 +156,7 @@ function closeModal() {
     }
 }
 function irSimulado() {
-    window.location.href = "simulado.html";
+    window.location.href = "ia_102.html";
 }
 function agendarExame() {
     window.location.href = "https://esi.microsoft.com", "_blank";
