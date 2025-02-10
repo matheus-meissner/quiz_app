@@ -232,10 +232,9 @@ main h5 {
 
 /* Estilizar os inputs escondendo-os */
 #start-options input[type="radio"] {
-    display: none; /* Esconde os botões de rádio padrão */
+    display: none;
 }
 
-/* Estilo para os botões personalizados */
 #start-options label {
     cursor: pointer;
     font-size: 12px;
@@ -246,12 +245,13 @@ main h5 {
     color: white;
     transition: all 0.3s ease;
     text-align: center;
+    display: inline-block;
 }
 
 /* Quando o botão está selecionado */
-#start-options input[type="radio"]:checked + span {
-    /* background-color: #4caf50;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+#start-options input[type="radio"]:checked + label {
+    background-color: #45a049;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border: 1px solid #69f16d;
 }
 
