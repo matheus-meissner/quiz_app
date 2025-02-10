@@ -1,11 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const totalQuestionsElement = document.getElementById('total-questions');
-    if (totalQuestionsElement && typeof totalQuestions !== 'undefined') {
-        totalQuestionsElement.textContent = `Perguntas Cadastradas: ${totalQuestions}`;
-    } else {
-        console.error('Erro: totalQuestions não está definido ou elemento não encontrado.');
-    }
+    const buttons = document.querySelectorAll('.certification-card button');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            const certification = event.target.parentElement.querySelector('h3').textContent;
+            localStorage.setItem('selectedCertification', certification); // Salva a certificação escolhida
+            window.location.href = "metodos.html"; // Redireciona para métodos
+        });
+    });
 });
+
 
 // Função para redirecionar à tela de prática
 function startPractice() {

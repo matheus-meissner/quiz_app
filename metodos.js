@@ -156,8 +156,18 @@ function closeModal() {
     }
 }
 function irSimulado() {
-    window.location.href = "ia_102.html";
+    const selectedCertification = localStorage.getItem('selectedCertification');
+
+    if (selectedCertification === "AI-120") {
+        window.location.href = "ai_102.html"; // Substitua pelo nome correto do arquivo do simulado
+    } else if (selectedCertification === "AI-900") {
+        window.location.href = "ai_900.html"; // Substitua pelo nome correto do arquivo do simulado
+    } else {
+        alert("Erro: Nenhuma certificação selecionada.");
+        window.location.href = "index.html"; // Volta à tela inicial caso haja erro
+    }
 }
+
 function agendarExame() {
     window.location.href = "https://esi.microsoft.com", "_blank";
 }
