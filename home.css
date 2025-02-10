@@ -60,8 +60,8 @@ main h2 {
 }
 
 .certification-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s, box-shadow 0.2s;
+    box-shadow: 0 12px 14px rgba(0, 0, 0, 0.2);
 }
 
 .certification-card h3 {
