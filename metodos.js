@@ -1,5 +1,5 @@
 // Obtém o total de questões do main.js
-const totalQuestions = window.totalQuestions || 140; // Usa o valor global ou um fallback padrão
+const totalQuestions = window.totalQuestions || 103; // Usa o valor global ou um fallback padrão
 let selectedMethod = null;
 
 // Função chamada ao selecionar um método
