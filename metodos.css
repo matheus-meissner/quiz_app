@@ -1,21 +1,23 @@
 /* Estilo Geral */
 body {
-    font-family: Arial, sans-serif; /* Define Arial como a fonte principal e sans-serif como fallback */
+    font-family: Arial, sans-serif;
     padding: 0;
     margin: 0;
-    background-color: #e8f5e9; /* Fundo opcional */
+    background-color: #e8f5e9;
+    overflow-x: hidden; /* Evita barra de rolagem horizontal */
 }
+
 a {
-    display: inline-block; /* Garante que o link respeite o layout do botão */
-    text-decoration: none; /* Remove o sublinhado do link */
-    color: inherit; /* Herda a cor do botão */
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
 }
 
 a button {
-    width: 100%; /* Garante que o botão ocupe toda a largura disponível */
+    width: 100%;
 }
 header.header {
-    position: relative; /* Necessário para o alinhamento absoluto do h1 */
+    position: relative;
     background: linear-gradient(to right, #4caf50, #87e6a9);
     padding: 15.5px;
     display: flex;
@@ -25,9 +27,9 @@ header.header {
 }
 
 header h1 {
-    position: absolute; /* Ignora o fluxo normal e permite centralização independente */
+    position: absolute;
     left: 50%;
-    transform: translateX(-50%); /* Centraliza horizontalmente */
+    transform: translateX(-50%);
     margin: 0;
     font-size: 24px;
     color: #fff;
@@ -43,11 +45,11 @@ button.back-button {
 }
 
 main.main-container {
-    display: flex; /* Ativa Flexbox */
-    flex-direction: column; /* Alinha itens verticalmente */
-    align-items: center; /* Centraliza horizontalmente */
-    justify-content: center; /* Centraliza verticalmente */
-    height: 100%; /* Garante que a altura seja respeitada */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 60px); /* Ajusta a altura para caber sem o footer */
     max-width: 800px;
     margin: 30px auto;
     padding: 20px;
@@ -69,8 +71,8 @@ main h5 {
 }
 
 .methods {
-    width: 100%; /* Ajusta para ocupar o espaço necessário */
-    max-width: 700px; /* Limita a largura máxima */
+    width: 100%;
+    max-width: 700px;
     padding: 20px;
     margin: 10px;
     background-color: #f8f8f8;
@@ -85,6 +87,7 @@ main h5 {
     display: flex;
     justify-content: center;
     gap: 20px;
+    flex-wrap: wrap; /* Permite quebra de linha nos botões */
     padding: 20px;
     margin: 10px;
 }
@@ -120,36 +123,36 @@ main h5 {
 }
 
 .modal-content {
-    display: flex; /* Ativa Flexbox */
-    flex-direction: column; /* Alinha itens verticalmente */
-    align-items: center; /* Centraliza horizontalmente */
-    justify-content: flex-start; /* Garante que o conteúdo fique no topo */
-    height: 700px; /* Mantém a altura definida */
-    width: 500px;
-    max-height: 700px; /* Limita a altura máxima */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: auto; /* Ajusta a altura dinamicamente */
+    max-height: calc(100vh - 40px); /* Limita a altura total para caber na tela com margens */
+    width: 90%;
+    max-width: 500px;
     background: white;
-    padding: 20px;
+    padding: 20px 30px; /* Espaçamento interno */
     border-radius: 8px;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    overflow: auto; /* Adiciona barra de rolagem quando o conteúdo exceder */
+    overflow-y: auto; /* Ativa rolagem vertical apenas se necessário */
+    overflow-x: hidden; /* Evita rolagem horizontal */
 }
 
+
 .modal-frame {
-    display: flex; /* Ativa Flexbox */
-    flex-direction: column; /* Organiza os itens verticalmente */
-    justify-content: flex-start; /* Garante que o conteúdo fique no topo */
-    width: 90%; /* Ajusta para ocupar o espaço necessário */
-    height: 700px;
-    max-height: 700px; /* Limita a altura máxima */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
     padding: 20px;
     background-color: #f8f8f8;
     border: 2px solid #4caf50;
     border-radius: 8px;
     text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
-    overflow: auto; /* Adiciona barra de rolagem se necessário */
+    overflow-y: auto;
 }
 
 #modal-title {
@@ -164,14 +167,11 @@ main h5 {
 }
 
 .modal-buttons {
-    display: flex; /* Ativa Flexbox */
+    display: flex;
     flex-direction: column;
-    justify-content: center; /* Centraliza horizontalmente */
-    margin-top: auto; /* Empurra os botões para o final da div */
-    margin-left: auto;
-    margin-right: auto;
-    gap: 10px; /* Espaçamento entre os botões */
-    width: 60%;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
 }
 
 .modal-frame button {
@@ -228,6 +228,7 @@ main h5 {
     justify-content: center;
     font-family: Arial, sans-serif;
     margin-top: 5px;
+    flex-wrap: wrap; /* Ajusta para telas menores */
 }
 
 /* Estilizar os inputs escondendo-os */
@@ -255,14 +256,13 @@ main h5 {
     border: 1px solid #69f16d;
 }
 
-
 .custom-method {
     display: flex;
-    flex-direction: column; /* Empilha verticalmente o input e o botão */
-    align-items: center; /* Centraliza horizontalmente */
+    flex-direction: column;
+    align-items: center;
     padding: 20px;
     margin: 10px;
-    gap: 10px; /* Espaço entre input e botão */
+    gap: 10px;
 }
 
 .custom-input {
@@ -270,7 +270,7 @@ main h5 {
     border: 2px solid #4caf50;
     border-radius: 8px;
     font-size: 16px;
-    width: 180px; /* Ajuste da largura */
+    width: 180px;
     text-align: center;
 }
 
@@ -289,18 +289,78 @@ main h5 {
     background-color: #45a049;
 }
 
-
-
 footer.footer {
-    position: fixed; /* Fixa o footer na tela */
-    bottom: 0; /* Cola o footer na parte inferior */
-    left: 0;
-    width: 100%; /* Faz o footer ocupar toda a largura */
+    position: relative; /* Altera para não fixar o footer */
     text-align: center;
     padding: 10px;
     background: linear-gradient(to right, #4caf50, #87e6a9);
     font-size: 12px;
     color: #fff;
-    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra para separação */
-    z-index: 10; /* Garante que fique acima de outros elementos */
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .methods {
+        max-width: 90%;
+        padding: 15px;
+    }
+
+    .methods-container {
+        flex-direction: column;
+        gap: 15px; /* Aumenta o espaçamento entre os itens para melhorar o layout */
+        padding: 15px;
+    }
+
+    .method-button {
+        font-size: 14px;
+        padding: 12px 18px;
+    }
+
+    main.main-container {
+        max-width: 95%;
+        padding: 15px;
+    }
+
+    .modal-content {
+        max-width: 95%; /* Ajusta a largura máxima para telas menores */
+        padding: 20px 50px;
+    }
+
+    .modal-buttons button {
+        font-size: 14px;
+        padding: 10px 15px; /* Redimensiona os botões */
+    }
+}
+
+@media (max-width: 480px) {
+    .methods {
+        max-width: 95%;
+        padding: 10px;
+    }
+
+    .methods-container {
+        flex-direction: column;
+        gap: 10px; /* Reduz o espaçamento para telas menores */
+        padding: 10px;
+    }
+
+    .method-button {
+        font-size: 12px;
+        padding: 10px 14px;
+    }
+
+    .modal-content {
+        max-width: 100%; /* Ocupa toda a largura da tela */
+        padding: 20px 50px;
+    }
+
+    .modal-buttons button {
+        font-size: 12px;
+        padding: 8px 12px; /* Ajusta os botões para serem proporcionais */
+    }
+
+    main.main-container {
+        max-width: 100%;
+        padding: 10px;
+    }
 }

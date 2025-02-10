@@ -104,3 +104,104 @@ footer.footer {
     box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra para separação */
     z-index: 10; /* Garante que fique acima de outros elementos */
 }
+
+/* Responsividade */
+
+/* Telas menores que 1024px (Tablets e alguns laptops) */
+@media (max-width: 1024px) {
+    main.main-container {
+        max-width: 90%;
+        padding: 15px;
+    }
+
+    .certification-card {
+        width: 45%;
+        margin: 10px 2.5%;
+    }
+
+    .certification-card h3 {
+        font-size: 16px;
+    }
+
+    .certification-card p {
+        font-size: 13px;
+    }
+
+    .certification-card button {
+        font-size: 13px;
+        padding: 8px 16px;
+    }
+}
+
+/* Telas menores que 768px (Smartphones e tablets pequenos) */
+@media (max-width: 768px) {
+    header.header-initial {
+        flex-direction: column;
+        text-align: center;
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 20px;
+    }
+
+    main.main-container {
+        max-width: 95%;
+        padding: 10px;
+    }
+
+    .certification-card {
+        margin: 10px 0;
+    }
+
+    .certification-card h3 {
+        font-size: 16px;
+    }
+
+    .certification-card p {
+        font-size: 12px;
+    }
+
+    .certification-card button {
+        font-size: 12px;
+        padding: 8px 14px;
+    }
+
+    footer.footer {
+        font-size: 10px;
+        padding: 8px;
+    }
+}
+
+/* Telas menores que 480px (Celulares pequenos) */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 18px;
+    }
+
+    main h2 {
+        font-size: 16px;
+    }
+
+    .certification-card {
+        padding: 15px;
+    }
+
+    .certification-card h3 {
+        font-size: 14px;
+    }
+
+    .certification-card p {
+        font-size: 12px;
+    }
+
+    .certification-card button {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    footer.footer {
+        font-size: 9px;
+        padding: 6px;
+    }
+}

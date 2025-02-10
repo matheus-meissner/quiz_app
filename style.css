@@ -18,7 +18,6 @@ html {
     color: #333;
     flex: 1; /* O título ocupa o máximo de espaço disponível */
     text-align: center;
-    margin-right: 60px
 }
 
 .header button {
