@@ -80,7 +80,7 @@ function handleCheckpointClick(limit, index) {
     updateProgressBar();
 }
 let currentCheckpointIndex = 0; // Índice do checkpoint atual
-const totalQuestions = 140; // Altere para o número total de perguntas
+const totalQuestions = 103; // Altere para o número total de perguntas
 const ultima_questao = totalQuestions; // Define a última questão
 const selectedMethod = parseInt(localStorage.getItem('selectedMethod'), 10) || 50; // Fallback para 50
 const checkpoints = generateCheckpoints(totalQuestions, selectedMethod);

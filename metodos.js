@@ -1,5 +1,5 @@
 // Obtém o total de questões do main.js
-const totalQuestions = window.totalQuestions || 140; // Usa o valor global ou um fallback padrão
+const totalQuestions = window.totalQuestions || 103; // Usa o valor global ou um fallback padrão
 let selectedMethod = null;
 
 // Função chamada ao selecionar um método
@@ -158,7 +158,7 @@ function closeModal() {
 function irSimulado() {
     const selectedCertification = localStorage.getItem('selectedCertification');
 
-    if (selectedCertification === "AI-120") {
+    if (selectedCertification === "AI-102") {
         window.location.href = "ai_102.html"; // Substitua pelo nome correto do arquivo do simulado
     } else if (selectedCertification === "AI-900") {
         window.location.href = "ai_900.html"; // Substitua pelo nome correto do arquivo do simulado
