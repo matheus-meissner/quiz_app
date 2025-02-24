@@ -105,6 +105,33 @@ footer.footer {
     z-index: 10; /* Garante que fique acima de outros elementos */
 }
 
+.checkpoints {
+    display: flex;
+    justify-content: space-evenly; /* Distribui os checkpoints proporcionalmente */
+    align-items: center;
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    min-width: 100%;
+    transition: all 0.3s ease;
+}
+
+.checkpoints label {
+    flex: 1; /* Cada checkpoint ocupa espaço igual */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    gap: 5px;
+    min-width: 50px; /* Garante um tamanho mínimo */
+    text-align: center;
+}
+
+
 /* Responsividade */
 
 /* Telas menores que 1024px (Tablets e alguns laptops) */

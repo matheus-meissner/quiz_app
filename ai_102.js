@@ -23,14 +23,17 @@ function renderCheckpoints(checkpoints) {
 
     container.innerHTML = ''; // Limpa o conteúdo existente
 
+    const checkpointCount = checkpoints.length; // Quantidade total de checkpoints
+
     checkpoints.forEach((limit, index) => {
         const checkpointNumber = index + 1;
 
         // Cria o elemento de checkpoint
         const label = document.createElement('label');
+        label.style.flex = `1 1 ${100 / checkpointCount}%`; // Distribui o espaço proporcionalmente
         label.innerHTML = `
             <input type="checkbox" id="checkpoint-${limit}" />
-            Checkpoint ${checkpointNumber}
+            ${checkpointNumber}
         `;
 
         // Adiciona evento de clique à checkbox para levar à primeira pergunta do próximo checkpoint
@@ -41,6 +44,7 @@ function renderCheckpoints(checkpoints) {
         container.appendChild(label);
     });
 }
+
 
 function handleCheckpointClick(limit, index) {
     const checkbox = document.querySelector(`#checkpoint-${limit}`);
@@ -80,7 +84,7 @@ function handleCheckpointClick(limit, index) {
     updateProgressBar();
 }
 let currentCheckpointIndex = 0; // Índice do checkpoint atual
-const totalQuestions = 140; // Altere para o número total de perguntas
+const totalQuestions = 416; // Altere para o número total de perguntas
 const ultima_questao = totalQuestions; // Define a última questão
 const selectedMethod = parseInt(localStorage.getItem('selectedMethod'), 10) || 50; // Fallback para 50
 const checkpoints = generateCheckpoints(totalQuestions, selectedMethod);
@@ -277,7 +281,6 @@ function markCheckpoint(limit) {
 
     if (checkbox && !checkbox.checked) { // Só marca se ainda não estiver marcado
         checkbox.checked = true;
-        alert(`Parabéns! Você passou da questão ${limit} e o checkpoint foi marcado.`);
     }
 }
 
